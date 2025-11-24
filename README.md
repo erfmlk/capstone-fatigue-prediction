@@ -95,13 +95,15 @@ A baseline **Linear Regression** model was developed using cleaned and engineere
 
 ##  Repository Structure
 
-| File                                           | Description                                                   |
-|-----------------------------------------------|--------------------------------------------------------------|
-| `Capstone_20_1_EDA.ipynb`                     | Main Jupyter Notebook with EDA and baseline regression model |
+| File                                           | Description                                                  |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| `Capstone_20_1_EDA.ipynb`                      | Main Jupyter Notebook with EDA and baseline regression model |
 | `Capstone data- Fatigue of LPBF AlSi10Mg.xlsx` | Dataset used in the project                                  |
-| `Fatigue_Capstone_Initial_Report.docx`        | Full report with figures and discussion                      |
-| `README.md`                                   | Project description and instructions                         |
-| `LICENSE`                                     | MIT License (optional)                                       |
+| `Fatigue_Capstone_Initial_Report.docx`         | Full report with figures and discussion                      |
+| `capstone20_1_plots/`                          | Add full set of EDA plots for Capstone 20.1                  |
+| `README.md`                                    | Project description and instructions                         |
+| `LICENSE`                                      | MIT License (optional)                                       |
+
 
 ---
 
