@@ -15,6 +15,7 @@ The assignment focuses on performing **Exploratory Data Analysis (EDA)**, cleani
 
 Dataset used:  
 **Capstone data – Fatigue of LPBF AlSi10Mg.xlsx**
+data adopted from: https://www.sciencedirect.com/science/article/pii/S2214860424002252
 
 ---
 
