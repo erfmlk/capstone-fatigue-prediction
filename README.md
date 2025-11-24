@@ -1,110 +1,112 @@
-Fatigue Life Prediction Using Machine Learning
-Capstone Project – Module 20.1: Exploratory Data Analysis (EDA)
-Program: Professional Certificate in Machine Learning & Artificial Intelligence – Berkeley
-By: Erfan Maleki
-________________________________________
-Overview
-This project analyzes the fatigue behavior of Laser Powder Bed Fusion (LPBF) AlSi10Mg alloy using machine learning.
-The goal is to explore the dataset through extensive EDA, engineer meaningful features, detect outliers, and build a baseline regression model for fatigue life prediction.
-This work represents the initial report for the final capstone (Module 20.1). Additional refined modeling and deployment will follow in Module 24.
-________________________________________
-Objective
-The main objective of this project is to:
-•	Perform data cleaning, preprocessing, and exploratory data analysis (EDA)
-•	Identify relationships between process parameters, surface condition, porosity, loading stress, and fatigue life
-•	Engineer new features to improve model understanding
-•	Develop a baseline regression model for predicting fatigue life (cycles to failure)
-•	Provide insights for mechanics + ML–driven fatigue analysis in LPBF alloys
-________________________________________
-Dataset Details
-The dataset includes fatigue test results for LPBF AlSi10Mg specimens with multiple process and post-processing conditions.
-Independent Variables (Inputs)
-Includes (but not limited to):
-•	Manufacturing Parameters:
-o	Build Orientation
-o	Energy Density / Laser Power / Scan Speed / Hatch Spacing
-•	Surface Condition: As-built, machined, shot peened, polished
-•	Porosity Metrics: Total porosity, pore size, distribution
-•	Surface Roughness Parameters: Sa, Sz, Sp, Sv
-•	Stress Level: Applied cyclic stress amplitude
-•	Heat Treatment Condition
-Dependent Variable (Target)
-•	Fatigue Life (cycles to failure) – a continuous regression target.
-Source
-Dataset provided as project input:
-Capstone data – Fatigue of LPBF AlSi10Mg.xlsx
-________________________________________
-Tools & Libraries
-•	Python
-•	pandas – Data cleaning and processing
-•	numpy – Statistical operations
-•	matplotlib & seaborn – Visualization
-•	scikit-learn – Baseline & advanced regression models
-•	Jupyter Notebook – Analysis environment
-________________________________________
-Key EDA Insights
-(Examples — modify based on your actual EDA results)
-•	Higher porosity and rougher surfaces → shorter fatigue life
-•	Machined and shot-peened specimens show significantly improved fatigue resistance
-•	Stress amplitude has a strong inverse logarithmic relationship with fatigue life
-•	Build orientation affects defect distribution → influences fatigue performance
-•	Several variables exhibit nonlinearity → supports ML-based modeling
-Figures include:
-•	Histograms of fatigue life distribution
-•	Boxplots for surface conditions
-•	Correlation heatmaps
-•	Scatterplots and regression lines (stress vs. life)
-•	Outlier detection (Z-score / IQR / boxplots)
-________________________________________
-Baseline Model
-A Random Forest Regressor was selected as the baseline due to:
-•	Good handling of nonlinear relationships
-•	Insensitivity to feature scaling
-•	Ability to rank feature importance
-•	Robust performance with engineering datasets
-Evaluation Metric
-•	R² Score (Coefficient of Determination)
-•	RMSE (Root Mean Square Error)
-Reason for Metric Choice
-•	Fatigue life has large numeric range, so RMSE is suitable to measure prediction error magnitude.
-•	R² provides a normalized measure of goodness of fit for regression models.
-Baseline Performance (Example)
-(Update with your actual outputs)
-•	R²: 0.78
-•	RMSE: 0.27 (log-scale fatigue life)
-________________________________________
-Advanced Modeling
-Future refinement in Module 24 will include:
-•	XGBoost Regressor
-•	Gradient Boosting Regressor
-•	Lasso/Ridge for comparison
-•	Hyperparameter tuning (GridSearchCV / RandomizedSearchCV)
-•	Cross-validation and final model selection
-•	SHAP values for explainability
-________________________________________
-Repository Structure
-File / Folder	Description
-Capstone_20_1_EDA.ipynb	Main notebook with full EDA, cleaning, feature engineering
-baseline_model_results.csv	Baseline model evaluation metrics
-capstone20_1_plots/	All generated figures and diagrams
-Fatigue_Data.xlsx	Full dataset
-README.md	Project documentation
-report_summary.pdf	Initial capstone EDA report (Module 20.1)
-LICENSE	MIT License
-capstone20_1_full_submission.zip	Complete packaged submission
-________________________________________
-How to Run
-git clone https://github.com/erfmlk/fatigue-life-capstone.git
-cd fatigue-life-capstone
-Open the notebook:
-jupyter notebook Capstone_20_1_EDA.ipynb
-________________________________________
-Summary of Findings
-•	Fatigue life is strongly influenced by stress amplitude, surface condition, and porosity indicators.
-•	Nonlinear behavior suggests ML models outperform simple linear regression.
-•	Feature engineering (log-life, normalized roughness, effective energy density) improves signal quality.
-•	Baseline Random Forest model demonstrates good predictive capability and serves as the foundation for further refinement.
-________________________________________
-License
-This project is released under the MIT License.
+# Fatigue Life Prediction Analysis  
+# fatigue-life-prediction
 
+**Project for Capstone Assignment 20.1: Initial Report and Exploratory Data Analysis (EDA)**  
+_First Capstone Modeling & EDA Assignment_  
+Course: **Professional Certificate in Machine Learning and Artificial Intelligence by Berkeley**  
+**By: Erfan Maleki**
+
+---
+
+##  Overview
+This project investigates the **fatigue behavior of LPBF-manufactured AlSi10Mg alloy** using a comprehensive experimental dataset that includes process parameters, surface characteristics, and mechanical testing variables.  
+
+The assignment focuses on performing **Exploratory Data Analysis (EDA)**, cleaning the dataset, engineering useful features, and developing a **baseline regression model** for fatigue life prediction.
+
+Dataset used:  
+**Capstone data – Fatigue of LPBF AlSi10Mg.xlsx**
+
+---
+
+##  Objective
+The main objectives of this project are:
+
+- Perform complete **EDA** to understand patterns in surface roughness, process parameters, and fatigue behavior.  
+- Clean and preprocess the dataset (missing values, duplicates, outliers).  
+- Engineer features such as **energy density**, **log-transformed fatigue life**, and **roughness groups**.  
+- Develop a **baseline regression model** for predicting fatigue life.  
+- Identify the **most influential variables** affecting fatigue performance.
+
+---
+
+##  Dataset Details
+The dataset includes the following feature groups:
+
+### **Manufacturing & Treatment Variables**
+- Build orientation  
+- Surface condition (as-built, machined, shot-peened, etc.)  
+- Heat treatment data  
+
+### **Process Parameters**
+- Laser power  
+- Scan speed  
+- Layer thickness  
+- Hatch distance  
+- Relative density  
+- Volumetric energy density (VED) — engineered feature  
+
+### **Surface & Microstructure Features**
+- Sa, Sv, Sp, Sz roughness parameters  
+- Porosity measurements  
+- Defect metrics (if available)
+
+### **Mechanical Testing Inputs**
+- Stress amplitude  
+- R-ratio  
+- Testing frequency  
+
+### **Target Variable**
+- **Fatigue Life (Nf)** — number of cycles to failure (regression target)
+
+---
+
+##  Tools and Libraries
+- **Python**
+- **pandas** – Data cleaning and preprocessing  
+- **numpy** – Numerical operations  
+- **matplotlib & seaborn** – EDA visualizations  
+- **scikit-learn** – Baseline regression model  
+- **Jupyter Notebook** – Full analysis workflow
+
+---
+
+##  Key Insights
+- Surface condition is one of the strongest predictors of fatigue life.  
+- Higher surface roughness (especially **Sa** and **Sz**) is associated with lower fatigue resistance.  
+- Stress amplitude shows a clear inverse relationship with fatigue life.  
+- Volumetric energy density and porosity provide insight into part quality and performance.  
+- Outlier analysis reveals several extreme fatigue cases likely tied to defects or unusual test conditions.
+
+---
+
+##  Baseline Model Summary
+
+A baseline **Linear Regression** model was developed using cleaned and engineered features.
+
+### **Evaluation Metric**
+- **R² Score** — selected to quantify how well the model explains variability in fatigue life.
+
+### **Result Summary**
+- The baseline model produces a **moderate R²**, confirming that linear relationships exist but are insufficient alone.  
+- Nonlinear models (Random Forest, Gradient Boosting, XGBoost) will be explored in Module 24 to improve predictive accuracy.  
+
+---
+
+##  Repository Structure
+
+| File                                           | Description                                                   |
+|-----------------------------------------------|--------------------------------------------------------------|
+| `Capstone_20_1_EDA.ipynb`                     | Main Jupyter Notebook with EDA and baseline regression model |
+| `Capstone data- Fatigue of LPBF AlSi10Mg.xlsx` | Dataset used in the project                                  |
+| `Fatigue_Capstone_Initial_Report.docx`        | Full report with figures and discussion                      |
+| `README.md`                                   | Project description and instructions                         |
+| `LICENSE`                                     | MIT License (optional)                                       |
+
+---
+
+## How to Run
+1. Clone the repository:
+
+```bash
+git clone https://github.com/erfmlk/fatigue-life-prediction.git
+cd fatigue-life-prediction
